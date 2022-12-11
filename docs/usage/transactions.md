@@ -173,3 +173,53 @@ console.log(data);
   ]
 }
 ```
+
+## Writing transactions
+
+```javascript title="POST https://api.pipewebmonetization.com/transactions"
+let headersList = {
+  "Content-Type": "application/json",
+};
+
+let bodyContent = JSON.stringify({
+  pluginId: "test-plugin-id",
+  paymentPointer: "test-payment-pointer",
+  date: 1670790921814,
+  totalValue: 0.0001,
+  transactions: [
+    {
+      date: 1670790921814,
+      value: 0.0001,
+    },
+  ],
+});
+
+let response = await fetch("https://api.pipewebmonetization.com/transactions", {
+  method: "POST",
+  body: bodyContent,
+  headers: headersList,
+});
+
+let data = await response.text();
+console.log(data);
+```
+
+### Request body
+
+The transactions POST method requires the following **body content**:
+
+- **pluginId**: User Wordpress pluginId
+- **paymentPointer**: Receiver paymentPointer
+- **date**: Numeric representation (milisseconds) of the batch date
+- **totalValue**: Batch total amount
+- **transactions**: Array of transactions
+  - **date**: Numeric representation (milisseconds) of the transaction date
+  - **value**: Transaction amount
+
+### Responses
+
+The expected reponse contains a **message** and an **errors array.**
+
+```json title="Expected response"
+{ "message": "OK", "errors": [] }
+```
