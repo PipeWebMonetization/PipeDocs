@@ -112,7 +112,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} PipeWebMonetization - Built with Docusaurus`,
+        copyright: `Creative Commons ${new Date().getFullYear()} PipeWebMonetization - Built with Docusaurus`,
       },
       prism: {
         theme: lightCodeTheme,
